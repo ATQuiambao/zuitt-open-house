@@ -6,3 +6,113 @@ Tools In this ZOH:
 - Git
 - HTML
 - CSS
+
+-----------------------------
+Notes
+
+# Generate SSH Key and add it to your GitHub account
+	Step 1: Generate SSH Key
+	1.Open Git Bash (Windows) or Terminal (Mac/Linux). 
+	2. Run this command in the git bash/terminal:
+		ssh-keygen -t rsa
+	3. When prompted:
+		- Press Enter to save in the default location.
+		- Press Enter two times to skip passphrase.
+	4. After that the terminal will show the "key's randomart image"
+
+	Step 2: Copy the Public Key
+	1. In the same terminal enter the following command to copy the content of the ssh-key created:
+	- For Windows
+		cat ~/.ssh/id_rsa.pub | clip
+	- For Linux
+		xclip -sel clip < ~/.ssh/id_rsa.pub
+	- For Mac
+		pbcopy < ~/.ssh/id_rsa.pub
+	2. No response will be seen in the terminal, but the command already copied the content in the clipboard.
+
+	Step 3: Add SSH Key to GitHub
+	1. Go to GitHub.
+	2. Click your Profile photo (top-right).
+	3. Go to Settings.
+	4. Click SSH and GPG keys (located at the side menu).
+	5. Click New SSH key.
+		Add:
+			- Title → e.g., My Laptop
+			- Key → Paste your copied public key.
+	6. Click Add SSH key.
+
+# Configure Global Git Username & Email
+	1. In the same terminal, set your Git identity globally (applies to all repositories) by entering the following command:
+		git config --global user.name "Your githun username"
+		git config --global user.email "your_email@example.com"
+	2. Verify if configured by running the command:
+		git config --global --list
+
+# Test Github Connection via SSH (optional)
+	1. In the same terminal run the command:
+		ssh -T git@github.com
+	2. If the ssh-key is successful added, you’ll see:
+		"Hi username! You've successfully authenticated..."
+
+# Using Git Commands and Creating a Remote Repository
+	Step 1: Open a terminal in the project folder.
+		- For Windows
+		    Right Click → Project Folder → Git Bash Here
+		- For Linux
+		    Right Click → Project Folder → Open in Terminal
+		- For Mac
+		    Open Terminal → Drag and drop Project Folder to terminal
+	Step 2: Initialize a local git repository
+		git init
+	Step 3: Check Repository Status
+		git status
+			- This will possibly shows one the following:
+				- Untracked files
+				- Modified files
+				- Files ready to commit
+	Step 4: Stage the files in preparation for creating a commit.
+		1. Add a specific file:
+			git add filename.ext
+		2. Add all files:
+			git add .
+		3. Files should now be in “staged” status when "git status" is issued again.
+	Step 5: Create a commit.
+		1. First Commit or For a brand-new repository, the standard message is:
+			git commit -m "Initial commit"
+				Note: This indicates the first saved version of the project.
+		2. Subsequent Commits or for all next commits:
+				- Keep the message short
+				- Make it clear and descriptive
+				-  Use present tense (e.g., Add, Fix, Update, not Added, Fixed)
+				
+				Examples:
+					git commit -m "Add login form validation"
+					git commit -m "Fix navbar alignment issue"
+	Step 6: Create a Remote Repository on GitHub
+		1. Go to GitHub and log in.
+		2. Click the + button (top-right corner) → New repository.
+		3. Enter the following details:
+			- Repository name → e.g., my-project
+			- Description → optional short description
+			- Visibility → Public or Private
+		4. Do not select “Initialize with a README” (if you already have a local repository).
+		5. Click Create repository.
+	Step 7: Copy the SSH Key of the Remote Repository
+		1. Under Quick Setup, click "SSH" and copy the clone url to connect the local repository to the remote repository.
+		2. Next, go to the terminal and connect the local repository to the remote repository through the copied url
+	Step 8:Add Remote Repository
+		1. Add remote origin:
+			git remote add origin git@github.com:username/repository.git
+		2. git remote -v
+	Step 9: Upload the local repository to a remote repository.
+		1. In your local project, make sure to untracked and uncommit changes.
+		2. Use the command
+			git push origin master
+
+				Notes:
+					- "push" is a term used uploading the local repository to the remote repository.
+					- origin refers to the added remote repository
+					- master refers to a branch or a snapshot of your project.
+	Note: For any changes for the project folder, follow steps 5 to 9.
+
+
