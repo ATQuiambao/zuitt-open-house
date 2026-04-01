@@ -1,0 +1,64 @@
+/*
+
+CSS Syntax:
+Selector {
+	property: value;
+}
+
+*/
+
+/* Universal Selector (*) - targets all the elements. */
+* {
+	font-family: "Courier New", monospace;
+}
+
+/* tag/type selector - target elements with a specified type/tag name */
+
+h1 {
+	font-family: "Tahoma", sans-serif;
+}
+
+body {
+	background-color: skyblue;
+}
+
+section {
+	text-align: center;
+}
+
+nav {
+	background-color: white;
+	text-align: center;
+	/* padding is a property that allow us to add a space within an element. */
+	/* padding: _px - add space in all direction of the element (TBLR)*/
+	padding: 15px;
+}
+
+/* Class Selector (.) target elements based on className. */
+.nav-link {
+	font-size: 18px;
+}
+
+.title {
+	color: green;
+}
+
+/* ID Selector (#) target element based on the id attribute */
+#hello{
+	color: black;
+	/* 
+	- root is a measurement called root element and it references the font-size of the root element 
+	- The default root element font-size is 16px.
+	*/
+	/*
+		= 2rem
+		= 2(16px)
+		2rem = 32px
+	*/
+	font-size: 2rem;
+}
+
+#logo{
+	height: 300px;
+	width: 300px;
+}
